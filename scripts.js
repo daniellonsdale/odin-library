@@ -1,5 +1,8 @@
 const myLibrary = [];
 const bookContainer = document.querySelector('.book-container');
+const totalBooks = document.querySelector('.statistics-total-books-num');
+const totalCompletedBooks = document.querySelector('.statistics-completed-books-num');
+const totalPages = document.querySelector('.statistics-total-pages-num');
 
 function Book(title, author, numPages, read, curDisplayed){
     this.title = title;
@@ -18,6 +21,20 @@ function displayBooks(){
         if(myLibrary[i].curDisplayed === false){
             createCard(myLibrary[i]);
             myLibrary[i].curDisplayed = true;
+
+            let curTotalBooks = parseInt(totalBooks.textContent);
+            curTotalBooks++;
+            totalBooks.textContent = curTotalBooks;
+
+            let curTotalPages = parseInt(totalPages.textContent);
+            curTotalPages += myLibrary[i].numPages;
+            totalPages.textContent = curTotalPages;
+
+            if(myLibrary[i].read === true){
+                let curTotalCompletedBooks = parseInt(totalCompletedBooks.textContent);
+                curTotalCompletedBooks++;
+                totalCompletedBooks.textContent = curTotalCompletedBooks;
+            }
         }
     }
 }
@@ -67,7 +84,4 @@ const nineEigthFour = new Book('1984', 'George Orwell', 316, true);
 addBookToLibrary(theHobbit);
 addBookToLibrary(nineEigthFour);
 
-displayBooks();
-displayBooks();
-displayBooks();
 displayBooks();
