@@ -1,11 +1,12 @@
 const myLibrary = [];
 const bookContainer = document.querySelector('.book-container');
 
-function Book(title, author, numPages, read){
+function Book(title, author, numPages, read, curDisplayed){
     this.title = title;
     this.author = author;
     this.numPages = numPages;
     this.read = read;
+    this.curDisplayed = false;
 }
 
 function addBookToLibrary(book) {
@@ -14,7 +15,10 @@ function addBookToLibrary(book) {
 
 function displayBooks(){
     for (const i in myLibrary) {
-        createCard(myLibrary[i]);
+        if(myLibrary[i].curDisplayed === false){
+            createCard(myLibrary[i]);
+            myLibrary[i].curDisplayed = true;
+        }
     }
 }
 
@@ -63,4 +67,7 @@ const nineEigthFour = new Book('1984', 'George Orwell', 316, true);
 addBookToLibrary(theHobbit);
 addBookToLibrary(nineEigthFour);
 
+displayBooks();
+displayBooks();
+displayBooks();
 displayBooks();
