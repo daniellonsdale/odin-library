@@ -30,7 +30,7 @@
                 </div>
                 <div class="input-wrapper">
                     <label for="book-pages">Number of Pages</label>
-                    <input type="text" name="book-pages" id="book-pages">
+                    <input type="number" name="book-pages" id="book-pages" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
                 </div>
                 <div class="input-wrapper">
                     <label for="book-read-boolean">Have you read this book?</label>
