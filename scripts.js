@@ -89,6 +89,7 @@ addBookBtn.addEventListener('click', () => {
 
 modalCloseBtn.addEventListener('click', () => {
     dialog.close();
+    form.reset();
 });
 
 formSubmitBtn.addEventListener('click', (e) => {
