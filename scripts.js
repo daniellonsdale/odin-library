@@ -3,6 +3,8 @@ const bookContainer = document.querySelector('.book-container');
 const totalBooks = document.querySelector('.statistics-total-books-num');
 const totalCompletedBooks = document.querySelector('.statistics-completed-books-num');
 const totalPages = document.querySelector('.statistics-total-pages-num');
+const addBookBtn = document.querySelector('.add-book-btn');
+const dialog = document.querySelector('dialog');
 
 function Book(title, author, numPages, read, curDisplayed){
     this.title = title;
@@ -77,6 +79,10 @@ function createCard(book){
 
     bookContainer.appendChild(bookCard);
 }
+
+addBookBtn.addEventListener('click', () => {
+    dialog.showModal();
+});
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 const nineEigthFour = new Book('1984', 'George Orwell', 316, true);
