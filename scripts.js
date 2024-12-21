@@ -5,6 +5,7 @@ const totalCompletedBooks = document.querySelector('.statistics-completed-books-
 const totalPages = document.querySelector('.statistics-total-pages-num');
 const addBookBtn = document.querySelector('.add-book-btn');
 const dialog = document.querySelector('dialog');
+const modalCloseBtn = document.querySelector('.modal-close-button');
 
 function Book(title, author, numPages, read, curDisplayed){
     this.title = title;
@@ -82,6 +83,10 @@ function createCard(book){
 
 addBookBtn.addEventListener('click', () => {
     dialog.showModal();
+});
+
+modalCloseBtn.addEventListener('click', () => {
+    dialog.close();
 });
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
