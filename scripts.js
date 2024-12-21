@@ -6,6 +6,8 @@ const totalPages = document.querySelector('.statistics-total-pages-num');
 const addBookBtn = document.querySelector('.add-book-btn');
 const dialog = document.querySelector('dialog');
 const modalCloseBtn = document.querySelector('.modal-close-button');
+const form = document.querySelector('form');
+const formSubmitBtn = document.querySelector('.submit-button');
 
 function Book(title, author, numPages, read, curDisplayed){
     this.title = title;
@@ -87,6 +89,23 @@ addBookBtn.addEventListener('click', () => {
 
 modalCloseBtn.addEventListener('click', () => {
     dialog.close();
+});
+
+formSubmitBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    let bookReadTemp;
+    if (formData.get('book-read-boolean') === 'on'){
+        bookReadTemp = true;
+    }else{
+        bookReadTemp = false;
+    }
+    const tempBook = new Book(formData.get('book-title'), formData.get('book-author'), parseInt(formData.get('book-pages')), bookReadTemp);
+    addBookToLibrary(tempBook);
+    dialog.close();
+    form.reset();
+    displayBooks();
 });
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
