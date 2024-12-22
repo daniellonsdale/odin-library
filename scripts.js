@@ -8,15 +8,14 @@ const dialog = document.querySelector('dialog');
 const modalCloseBtn = document.querySelector('.modal-close-button');
 const form = document.querySelector('form');
 const formSubmitBtn = document.querySelector('.submit-button');
-const removeButtonList = document.querySelectorAll('.remove-button');
 
-function Book(title, author, numPages, read, curDisplayed, id){
+function Book(title, author, numPages, read, curDisplayed){
     this.title = title;
     this.author = author;
     this.numPages = numPages;
     this.read = read;
     this.curDisplayed = false;
-    this.id = myLibrary.length + 1;
+    this.id = myLibrary.length;
     this.displayBook = true;
     myLibrary.push(this);
 }
@@ -108,13 +107,15 @@ formSubmitBtn.addEventListener('click', (e) => {
     form.reset();
     displayBooks();
 });
-console.log(removeButtonList);
-removeButtonList.forEach(button => button.addEventListener('click', () => {
-    removeCard(button.parentNode);
-}));
+
+bookContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains("remove-button")){
+        removeCard(e.target.parentElement);
+    }
+});
 
 function removeCard(card){
-    myLibrary[card.id].displayBook = false;
+    myLibrary[parseInt(card.id)].displayBook = false;
     displayBooks();
 }
 
