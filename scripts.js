@@ -45,7 +45,7 @@ function displayBooks(){
 function createCard(book){
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
-    bookCard.classList.add(book.id);
+    bookCard.id = book.id;
 
     const title = document.createElement('h1');
     title.classList.add('title');
