@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 const bookContainer = document.querySelector('.book-container');
 const totalBooks = document.querySelector('.statistics-total-books-num');
 const totalCompletedBooks = document.querySelector('.statistics-completed-books-num');
@@ -115,6 +115,12 @@ bookContainer.addEventListener('click', (e) => {
 
 function removeCard(card){
     card.remove();
+    myLibrary.splice(parseInt(card.id), 1);
+    for (const i in myLibrary){
+        if (i >= parseInt(card.id)){
+            myLibrary[i].id--;
+        }
+    }
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
