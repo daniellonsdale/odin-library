@@ -114,7 +114,7 @@ bookContainer.addEventListener('click', (e) => {
 });
 
 function removeCard(card){
-
+    card.remove();
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
