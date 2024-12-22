@@ -9,16 +9,14 @@ const modalCloseBtn = document.querySelector('.modal-close-button');
 const form = document.querySelector('form');
 const formSubmitBtn = document.querySelector('.submit-button');
 
-function Book(title, author, numPages, read, curDisplayed){
+function Book(title, author, numPages, read, curDisplayed, id){
     this.title = title;
     this.author = author;
     this.numPages = numPages;
     this.read = read;
     this.curDisplayed = false;
-}
-
-function addBookToLibrary(book) {
-    myLibrary.push(book);
+    this.id = myLibrary.length + 1;
+    myLibrary.push(this);
 }
 
 function displayBooks(){
@@ -47,6 +45,7 @@ function displayBooks(){
 function createCard(book){
     const bookCard = document.createElement('div');
     bookCard.classList.add('book-card');
+    bookCard.classList.add(book.id);
 
     const title = document.createElement('h1');
     title.classList.add('title');
@@ -103,7 +102,6 @@ formSubmitBtn.addEventListener('click', (e) => {
         bookReadTemp = false;
     }
     const tempBook = new Book(formData.get('book-title'), formData.get('book-author'), parseInt(formData.get('book-pages')), bookReadTemp);
-    addBookToLibrary(tempBook);
     dialog.close();
     form.reset();
     displayBooks();
@@ -111,8 +109,5 @@ formSubmitBtn.addEventListener('click', (e) => {
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 const nineEigthFour = new Book('1984', 'George Orwell', 316, true);
-
-addBookToLibrary(theHobbit);
-addBookToLibrary(nineEigthFour);
 
 displayBooks();
