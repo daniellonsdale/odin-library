@@ -115,6 +115,7 @@ bookContainer.addEventListener('click', (e) => {
 
 function removeCard(card){
     card.remove();
+    //FIX DOM id TOO
     myLibrary.splice(parseInt(card.id), 1);
     for (const i in myLibrary){
         if (i >= parseInt(card.id)){
