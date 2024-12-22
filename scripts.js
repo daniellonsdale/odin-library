@@ -8,6 +8,7 @@ const dialog = document.querySelector('dialog');
 const modalCloseBtn = document.querySelector('.modal-close-button');
 const form = document.querySelector('form');
 const formSubmitBtn = document.querySelector('.submit-button');
+const removeButtonList = document.querySelectorAll('.remove-button');
 
 function Book(title, author, numPages, read, curDisplayed, id){
     this.title = title;
@@ -16,12 +17,13 @@ function Book(title, author, numPages, read, curDisplayed, id){
     this.read = read;
     this.curDisplayed = false;
     this.id = myLibrary.length + 1;
+    this.displayBook = true;
     myLibrary.push(this);
 }
 
 function displayBooks(){
     for (const i in myLibrary) {
-        if(myLibrary[i].curDisplayed === false){
+        if(myLibrary[i].curDisplayed === false && myLibrary[i].displayBook === true){
             createCard(myLibrary[i]);
             myLibrary[i].curDisplayed = true;
 
@@ -106,6 +108,15 @@ formSubmitBtn.addEventListener('click', (e) => {
     form.reset();
     displayBooks();
 });
+console.log(removeButtonList);
+removeButtonList.forEach(button => button.addEventListener('click', () => {
+    removeCard(button.parentNode);
+}));
+
+function removeCard(card){
+    myLibrary[card.id].displayBook = false;
+    displayBooks();
+}
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 const nineEigthFour = new Book('1984', 'George Orwell', 316, true);
