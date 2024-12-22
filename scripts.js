@@ -16,13 +16,12 @@ function Book(title, author, numPages, read, curDisplayed){
     this.read = read;
     this.curDisplayed = false;
     this.id = myLibrary.length;
-    this.displayBook = true;
     myLibrary.push(this);
 }
 
 function displayBooks(){
     for (const i in myLibrary) {
-        if(myLibrary[i].curDisplayed === false && myLibrary[i].displayBook === true){
+        if(myLibrary[i].curDisplayed === false){
             createCard(myLibrary[i]);
             myLibrary[i].curDisplayed = true;
 
@@ -115,8 +114,7 @@ bookContainer.addEventListener('click', (e) => {
 });
 
 function removeCard(card){
-    myLibrary[parseInt(card.id)].displayBook = false;
-    displayBooks();
+
 }
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
