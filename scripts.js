@@ -114,8 +114,29 @@ bookContainer.addEventListener('click', (e) => {
 });
 
 function removeCard(card){
+    //Remove card from DOM
     card.remove();
+
+    //Remove book object from myLibrary
     myLibrary.splice(parseInt(card.id), 1);
+
+    //Update statistics
+    let curTotalBooks = parseInt(totalBooks.textContent);
+    curTotalBooks--;
+    totalBooks.textContent = curTotalBooks;
+
+    let curTotalPages = parseInt(totalPages.textContent);
+    let cardPages = card.querySelector('.pages');
+    curTotalPages -= parseInt(cardPages.textContent);
+    totalPages.textContent = curTotalPages;
+
+    let cardRead = card.querySelector('.read-boolean');
+    if(cardRead.textContent === 'READ'){
+        let curTotalCompletedBooks = parseInt(totalCompletedBooks.textContent);
+        curTotalCompletedBooks--;
+        totalCompletedBooks.textContent = curTotalCompletedBooks;
+    }
+
     for (const i in myLibrary){
         if (i >= parseInt(card.id)){
             myLibrary[i].id--;
