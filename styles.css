@@ -105,13 +105,13 @@ body .main-content{
   padding: 24px;
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(17vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   grid-auto-rows: 1fr;
   gap: 12px;
 }
 
 .book-container .book-card{
-  min-height: 25vw;
+  min-height: 25vh;
   padding: 12px;
   border-left: var(--dark-green) 4px solid;
   border-radius: 1rem;
@@ -130,6 +130,8 @@ body .main-content{
 .book-card h1{
   font-size: 2rem;
   font-weight: 600;
+  text-wrap: balance;
+  word-break: break-all;
 }
 
 .book-card .button-footer{
