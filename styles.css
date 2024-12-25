@@ -6,6 +6,14 @@
   box-sizing: border-box;
 }
 
+:root{
+  --lavender-web: hsla(221, 49%, 85%, 1);
+  --powder-blue: hsla(215, 46%, 71%, 1);
+  --paynes-gray: hsla(200, 19%, 44%, 1);
+  --feldgrau: hsla(161, 23%, 29%, 1);
+  --dark-green: hsla(98, 36%, 14%, 1);
+}
+
 @font-face {
   font-family: 'robotoregular';
   src: url('roboto-regular-webfont.woff2') format('woff2'),
@@ -21,6 +29,8 @@ body{
   display: grid;
   grid-template-columns: 1fr minmax(175px, 15vw);
   grid-template-rows: 10vh 90vh 1fr;
+
+  background-color: var(--paynes-gray);
 }
 
 body header{
@@ -31,11 +41,26 @@ body header{
   justify-content: space-between;
   align-items: center;
   padding: 0 3rem;
+
+  background-color: var(--dark-green);
+  color: var(--lavender-web);
 }
 
 header .title{
-  font-size: 2rem;
+  font-size: 2.5rem;
   letter-spacing: .1rem;
+}
+
+header button{
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--powder-blue);
+  padding: 12px;
+}
+
+header > button:hover{
+  background-color: var(--paynes-gray);
+  cursor: pointer;
 }
 
 body .sidebar{
@@ -46,7 +71,19 @@ body .sidebar{
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-right: 12px;
+  padding-right: 12px;
+
+  background-color: var(--feldgrau);
+  color: var(--lavender-web);
+  box-shadow: -5px 7px 5px 0px rgba(0,0,0,0.75);
+}
+
+body .sidebar-secondary{
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  
+  background-color: var(--feldgrau);
+  box-shadow: -5px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .statistics-list li{
@@ -76,7 +113,7 @@ body .main-content{
 .book-container .book-card{
   min-height: 25vw;
   padding: 12px;
-  border: 1px black solid;
+  border-left: var(--dark-green) 4px solid;
   border-radius: 1rem;
 
   display: flex;
@@ -85,7 +122,14 @@ body .main-content{
   align-items: center;
   gap: 12px;
 
-  position: relative;
+  background-color: var(--lavender-web);
+  color: var(--dark-green);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.book-card h1{
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .book-card .button-footer{
@@ -97,6 +141,15 @@ body .main-content{
   flex-grow: 1;
   width: 50%;
   padding: 8px;
+
+  border-radius: 1rem;
+  border: none;
+  background-color: var(--powder-blue);
+}
+
+.button-footer > *:hover{
+  background-color: var(--paynes-gray);
+  cursor: pointer;
 }
 
 form {
