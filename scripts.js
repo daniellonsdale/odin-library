@@ -188,8 +188,3 @@ function toggleReadStatus(card){
         totalCompletedBooks.textContent = curTotalCompletedBooks;
     }
 }
-
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-const nineEigthFour = new Book('1984', 'George Orwell', 316, true);
-
-displayBooks();
