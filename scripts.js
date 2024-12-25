@@ -52,12 +52,6 @@ function createCard(book){
     title.textContent = book.title;
     bookCard.appendChild(title);
 
-    const removeButton = document.createElement('button');
-    removeButton.classList.add('remove-button');
-    removeButton.setAttribute("type", "button");
-    removeButton.textContent = "X";
-    bookCard.appendChild(removeButton);
-
     const author = document.createElement('h2');
     author.classList.add('author');
     author.textContent = book.author;
@@ -78,6 +72,22 @@ function createCard(book){
         read.classList.add('not-read');
     }
     bookCard.appendChild(read);
+
+    const buttonFooter = document.createElement('div');
+    buttonFooter.classList.add('button-footer');
+    bookCard.appendChild(buttonFooter);
+
+    const readToggleButton = document.createElement('button');
+    readToggleButton.classList.add('read-toggle-button');
+    readToggleButton.setAttribute("type", "button");
+    readToggleButton.textContent = "Toggle read status";
+    buttonFooter.appendChild(readToggleButton);
+
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('remove-button');
+    removeButton.setAttribute("type", "button");
+    removeButton.textContent = "Remove book";
+    buttonFooter.appendChild(removeButton);
 
     bookContainer.appendChild(bookCard);
 }
@@ -109,7 +119,7 @@ formSubmitBtn.addEventListener('click', (e) => {
 
 bookContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains("remove-button")){
-        removeCard(e.target.parentElement);
+        removeCard(e.target.parentElement.parentElement);
     }
 });
 
