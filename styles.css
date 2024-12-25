@@ -182,6 +182,10 @@ form .input-wrapper{
   gap: 4px;
 }
 
+form .required-marker{
+  color: red;
+}
+
 .input-wrapper input[type='checkbox']{
   margin-left: auto;
   flex: none;

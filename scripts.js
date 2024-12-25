@@ -101,20 +101,32 @@ modalCloseBtn.addEventListener('click', () => {
     form.reset();
 });
 
-formSubmitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+const bookTitleInput = document.querySelector('#book-title');
+bookTitleInput.addEventListener('change', (e) => {
+  e.target.reportValidity();
+});
 
-    const formData = new FormData(form);
-    let bookReadTemp;
-    if (formData.get('book-read-boolean') === 'on'){
-        bookReadTemp = true;
-    }else{
-        bookReadTemp = false;
+formSubmitBtn.addEventListener('click', (e) => {
+    let bookTitleInputValidity = document.querySelector('#book-title').reportValidity();
+    let bookAuthorInputValidity = document.querySelector('#book-author').reportValidity();
+    let bookPagesInputValidity = document.querySelector('#book-pages').reportValidity();
+    let bookReadInputValidity = document.querySelector('#book-read-boolean').reportValidity();
+
+    if(bookTitleInputValidity && bookAuthorInputValidity && bookPagesInputValidity && bookReadInputValidity){
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        let bookReadTemp;
+        if (formData.get('book-read-boolean') === 'on'){
+            bookReadTemp = true;
+        }else{
+            bookReadTemp = false;
+        }
+        const tempBook = new Book(formData.get('book-title'), formData.get('book-author'), parseInt(formData.get('book-pages')), bookReadTemp);
+        dialog.close();
+        form.reset();
+        displayBooks();
     }
-    const tempBook = new Book(formData.get('book-title'), formData.get('book-author'), parseInt(formData.get('book-pages')), bookReadTemp);
-    dialog.close();
-    form.reset();
-    displayBooks();
 });
 
 bookContainer.addEventListener('click', (e) => {

@@ -14,7 +14,7 @@
 </header>
 <dialog>
     <form action="">
-        <!-- NEED TO FIX CLIENT SIDE VALIDATION -->
+        <!-- NEED TO FIX CLIENT SIDE VALIDATION -> not working since form is not submitted -->
         <div class="form-container">
             <div class="form-header-container">
                 <h2>Book Information</h2>
@@ -22,16 +22,16 @@
             </div>
             <div class="input-container">
                 <div class="input-wrapper">
-                    <label for="book-title">Title</label>
+                    <label for="book-title"><span class="required-marker">*</span>Title</label>
                     <input type="text" name="book-title" id="book-title" minlength="1" maxlength="100" required>
                 </div>
                 <div class="input-wrapper">
-                    <label for="book-author">Author</label>
-                    <input type="text" name="book-author" id="book-author" minlength="1" maxlength="100">
+                    <label for="book-author"><span class="required-marker">*</span>Author</label>
+                    <input type="text" name="book-author" id="book-author" minlength="1" maxlength="100" required>
                 </div>
                 <div class="input-wrapper">
-                    <label for="book-pages">Number of Pages</label>
-                    <input type="number" name="book-pages" id="book-pages" min="1" max="10000" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'">
+                    <label for="book-pages"><span class="required-marker">*</span>Number of Pages</label>
+                    <input type="number" name="book-pages" id="book-pages" min="1" max="10000" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" required>
                 </div>
                 <div class="input-wrapper">
                     <label for="book-read-boolean">Have you read this book?</label>
