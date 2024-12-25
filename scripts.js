@@ -124,11 +124,21 @@ bookContainer.addEventListener('click', (e) => {
 });
 
 function removeCard(card){
-    //Remove card from DOM
-    card.remove();
-
     //Remove book object from myLibrary
     myLibrary.splice(parseInt(card.id), 1);
+
+    //Update IDs in myLibrary array and update card ids in DOM (do this before removing from DOM)
+    for (const i in myLibrary){
+        if (i >= parseInt(card.id)){
+            let idToGrab = myLibrary[i].id--;
+            let tempID = document.getElementById(`${idToGrab}`);
+            console.log(idToGrab);
+            tempID.id = myLibrary[i].id;
+        }
+    }
+
+    //Remove card from DOM
+    card.remove();
 
     //Update statistics
     let curTotalBooks = parseInt(totalBooks.textContent);
@@ -145,13 +155,6 @@ function removeCard(card){
         let curTotalCompletedBooks = parseInt(totalCompletedBooks.textContent);
         curTotalCompletedBooks--;
         totalCompletedBooks.textContent = curTotalCompletedBooks;
-    }
-
-    for (const i in myLibrary){
-        if (i >= parseInt(card.id)){
-            myLibrary[i].id--;
-            card.id = parseInt(card.id)--;
-        }
     }
 }
 
