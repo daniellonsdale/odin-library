@@ -120,6 +120,8 @@ formSubmitBtn.addEventListener('click', (e) => {
 bookContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains("remove-button")){
         removeCard(e.target.parentElement.parentElement);
+    }else if(e.target.classList.contains("read-toggle-button")){
+        toggleReadStatus(e.target.parentElement.parentElement);
     }
 });
 
@@ -154,6 +156,23 @@ function removeCard(card){
     if(cardRead.textContent === 'READ'){
         let curTotalCompletedBooks = parseInt(totalCompletedBooks.textContent);
         curTotalCompletedBooks--;
+        totalCompletedBooks.textContent = curTotalCompletedBooks;
+    }
+}
+
+function toggleReadStatus(card){
+    let readStatus = card.querySelector('.read-boolean');
+    if(readStatus.textContent === 'READ'){
+        readStatus.textContent = 'NOT READ';
+        myLibrary[parseInt(card.id)].read = false;
+        let curTotalCompletedBooks = parseInt(totalCompletedBooks.textContent);
+        curTotalCompletedBooks--;
+        totalCompletedBooks.textContent = curTotalCompletedBooks;
+    }else{
+        readStatus.textContent = 'READ';
+        myLibrary[parseInt(card.id)].read = true;
+        let curTotalCompletedBooks = parseInt(totalCompletedBooks.textContent);
+        curTotalCompletedBooks++;
         totalCompletedBooks.textContent = curTotalCompletedBooks;
     }
 }
