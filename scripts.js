@@ -9,14 +9,43 @@ const modalCloseBtn = document.querySelector('.modal-close-button');
 const form = document.querySelector('form');
 const formSubmitBtn = document.querySelector('.submit-button');
 
-function Book(title, author, numPages, read, curDisplayed){
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.read = read;
-    this.curDisplayed = false;
-    this.id = myLibrary.length;
-    myLibrary.push(this);
+class Book{
+    #title;
+    #author;
+    #numPages;
+    #read;
+    #curDisplayed;
+    #id;
+
+    constructor(title, author, numPages, read, curDisplayed){
+        this.#title = title;
+        this.#author = author;
+        this.#numPages = numPages;
+        this.#read = read;
+        this.#curDisplayed = false;
+        this.#id = myLibrary.length;
+        myLibrary.push(this);
+    }
+
+    get title(){
+        return this.#title;
+    }
+    get author(){
+        return this.#author;
+    }
+    get numPages(){
+        return this.#numPages;
+    }
+    get read(){
+        return this.#read;
+    }
+    get curDisplayed(){
+        return this.#curDisplayed;
+    }
+    get id(){
+        return this.#id;
+    }
+
 }
 
 function displayBooks(){
